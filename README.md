@@ -28,7 +28,7 @@ the information is passed onto the files final_chl_list and final_seq_list for E
 First Time Set Up:
 
 Tested Environment - MQ v9.1, Linux
-Change the permissions to executable 755 seq_mis_reset.sh
+Change the permissions to executable 755 seq_mis_reset.sh.
 The script executes for every Queue Manager in batch mode. So we need to call the function for every 
 QM at the last line.
 reset_for_qmgr QM\!A_QM
