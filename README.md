@@ -6,7 +6,7 @@ What it does?
 This script will automatically fetch the sequence mismatch number from the AMQERR01.LOG and then 
 reset the connection with the last matched sequence number. For more information about the error 
 and for manual process to troubleshoot for the same, please refer below link.
-
+https://www.ibm.com/support/pages/amq9526-message-sequence-number-error-channel
 
 How it does?
 
