@@ -1,4 +1,5 @@
 #!/bin/bash
+#Added a comment
 reset_for_qmgr() {
 
 a=$(echo $1 | awk '{print substr($1, 4)}')
