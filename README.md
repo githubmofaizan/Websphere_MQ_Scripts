@@ -11,7 +11,7 @@ https://www.ibm.com/support/pages/amq9526-message-sequence-number-error-channel
 
 How it does?
 
-The fetches the information from the active error log AMQERR01.LOG and tabulates in below format 
+The script fetches the information from the active error log AMQERR01.LOG and tabulates in below format 
 inside the reset_rec_files.
 Number_of_occurrences Channel_name Required_sequence_number
 49  A.B 3117675
@@ -95,15 +95,15 @@ DONT's:
 2. Do not replicate the script into multiple scripts and run all together at the same time.
 3. Do not use in Solaris Env.
 4. Do not use the script if error log file rotation is linear. We need to make few changes.
-Explanation: To keep track of number of appearances of the error, the active log file should be refreshed 
-once it reaches the memory limit which is not the case for linearly
-rotating error log files. Make below changes before using the script for linear error log files.
-Before: 
-cat -n seq_mis_reset_cron.sh | grep "uniq"
-22 paste -d " " sdr_chl_list sdr_seq_nums | sort | uniq -c > new_reset_$qmgr
-32 paste -d " " rcvr_chl_list rcvr_seq_nums | sort | uniq -c >> new_reset_$qmgr
-After:
-cat -n seq_mis_reset_cron.sh | grep "uniq"
-22 paste -d " " sdr_chl_list sdr_seq_nums | sort | uniq > new_reset_$qmgr
-32 paste -d " " rcvr_chl_list rcvr_seq_nums | sort | uniq >> new_reset_$qmgr
+  Explanation: To keep track of number of appearances of the error, the active log file should be refreshed 
+  once it reaches the memory limit which is not the case for linearly
+  rotating error log files. Make below changes before using the script for linear error log files.
+  Before: 
+  cat -n seq_mis_reset_cron.sh | grep "uniq"
+  22 paste -d " " sdr_chl_list sdr_seq_nums | sort | uniq -c > new_reset_$qmgr
+  32 paste -d " " rcvr_chl_list rcvr_seq_nums | sort | uniq -c >> new_reset_$qmgr
+  After:
+  cat -n seq_mis_reset_cron.sh | grep "uniq"
+  22 paste -d " " sdr_chl_list sdr_seq_nums | sort | uniq > new_reset_$qmgr
+  32 paste -d " " rcvr_chl_list rcvr_seq_nums | sort | uniq >> new_reset_$qmgr
 5. Do not use the script directly without reading these instructions
