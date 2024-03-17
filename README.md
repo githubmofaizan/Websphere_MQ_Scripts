@@ -29,7 +29,7 @@ the information is passed onto the files final_chl_list and final_seq_list for E
 First Time Set Up:
 
 Tested Environment - MQ v9.1, Linux
-Change the permissions to executable 755 seq_mis_reset.sh.
+Change the script permissions to executable 755.
 The script executes for every Queue Manager in batch mode. So we need to call the function for every 
 QM at the last line.
 reset_for_qmgr QM\!A_QM
@@ -44,11 +44,11 @@ reset_rec_QM.B_QM
 
 Rules for setting cron frequency and sleep time duration:
 
-Consider the lines 42, 46 & 48 in the Execution stanza where the sleeps commands are given.
-line 42: Waits for 5s after channels are stopped
-line 46: Waits for 5s after channels are reset
-Line 48: Waits for 100s to see if the channels come up after reset and if not so, an alert mail will be 
-triggered meaning the channel is done but the channel has not yet come up. If the alert mail is not 
+Consider the lines 43, 47 & 49 in the Execution stanza where the sleeps commands are given.
+line 43: Waits for 5s after channels are stopped
+line 47: Waits for 5s after channels are reset
+Line 49: Waits for 100s to see if the channels come up after reset and if not so, an alert mail will be 
+triggered meaning the channel reset is done but the channel has not yet come up. If the alert mail is not 
 triggered after the given amount of time, it means that the channel reset is done successfully and the 
 channel is up and running. Please do update the mail id in the same line before use.
 
@@ -77,7 +77,7 @@ duration accordingly.
 (X + Y + Z + 5) = T/N
 (5 + 5 + Z + 5) = 300/3
 Z = 100 - 15 = 85s
-Therefore, you need to update the line 48 will sleep 85.
+Therefore, you need to update the line 49 as sleep 85.
 
 
 
